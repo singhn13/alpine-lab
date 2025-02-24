@@ -1,7 +1,21 @@
 ---
-layout: layout.liquid
 title: 11ty Boilerplate
 ---
+<head>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body x-data="{ name: '' }">
+    <h1 x-text="name">Click the button to get a random name!</h1>
 
-<h1>Yet Another 11ty <strong>Boilerplate</strong></h1>
-<img alt="pine" src="/images/pine.png" width="50" />
+    <button x-data @click="name = getName()" class="random-name-btn">Click me</button>
+
+    <script>
+        function getName() {
+            const names = [
+            "Jeff", "Ibrahim", "Luke", "David", "Navya",
+            "Chloe", "Grace", "Dylan", "Ivy", "Jack"
+            ];
+            return names[Math.floor(Math.random() * names.length)];
+        }
+    </script>
+</body>
